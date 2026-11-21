@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vidz Extracteur</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="popup">
+  <header class="top">
+    <img src="icons/48.png" width="34" height="34" alt="">
+    <h1>Vidz Extracteur</h1>
+    <button id="scan" class="secondary" type="button">Actualiser</button>
+  </header>
+  <main>
+    <h2 id="page-title">Vidéos de l’onglet</h2>
+    <p id="empty" class="empty" role="status">Recherche de vidéos…</p>
+    <ul id="videos" class="videos" hidden></ul>
+    <p id="status" class="status" role="status" hidden></p>
+  </main>
+  <template id="video-card">
+    <li class="video">
+      <figure class="preview">
+        <img alt="" referrerpolicy="no-referrer" hidden>
+        <div class="preview-empty"><span class="play-mark" aria-hidden="true"></span>Aperçu indisponible</div>
+        <span class="duration" title="Durée" hidden></span>
+      </figure>
+      <div class="video-info">
+        <div class="video-heading">
+          <span class="video-format"></span>
+          <strong class="video-name"></strong>
+        </div>
+        <p class="video-details"></p>
+        <form class="name-edit" hidden>
+          <input type="text" aria-label="Nom de la vidéo" maxlength="110" required>
+          <button class="secondary" type="submit">OK</button>
+        </form>
+        <div class="video-actions">
+          <label class="quality" hidden>
+            <span>Qualité</span>
+            <select></select>
+          </label>
+          <button class="rename secondary" type="button">Renommer</button>
+          <button class="download" type="button">Télécharger</button>
+        </div>
+      </div>
+    </li>
+  </template>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

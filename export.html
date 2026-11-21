@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Export HLS – Vidz Extracteur</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="export-page">
+  <header class="top">
+    <img src="icons/48.png" width="34" height="34" alt="">
+    <h1>Export HLS</h1>
+  </header>
+  <main>
+    <h2 id="title">Vidéo à la demande</h2>
+    <p id="status" class="status" role="status">Lecture de la liste HLS…</p>
+    <progress id="progress" aria-label="Progression de l’export" hidden></progress>
+    <div class="controls">
+      <button id="save" type="button" disabled>Enregistrer la vidéo</button>
+      <button id="cancel" class="secondary" type="button" hidden>Annuler</button>
+    </div>
+  </main>
+  <script type="module" src="export.js"></script>
+</body>
+</html>
