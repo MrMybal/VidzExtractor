@@ -1,3 +1,4 @@
+import { extension } from "./api.js";
 import { mediaFrom } from "./media.js";
 
 const urls = ["http://*/*", "https://*/*"];
@@ -7,16 +8,16 @@ let pending = Promise.resolve();
 function update(tabId, change) {
   pending = pending.then(async () => {
     const key = `tab:${tabId}`;
-    const stored = (await chrome.storage.session.get(key))[key];
+    const stored = (await extension.storage.session.get(key))[key];
     const next = change(stored);
     if (next === undefined) return;
     if (next === null) {
-      await chrome.storage.session.remove(key);
+      await extension.storage.session.remove(key);
       return;
     }
-    await chrome.storage.session.set({ [key]: next });
+    await extension.storage.session.set({ [key]: next });
     const count = next.items.filter(item => item.kind !== "dash").length;
-    await chrome.action.setBadgeText({ tabId, text: count ? String(count) : "" });
+    await extension.action.setBadgeText({ tabId, text: count ? String(count) : "" });
   }).catch(error => {
     if (!/^No tab with id/.test(error.message)) console.error(error);
   });
@@ -30,9 +31,9 @@ function responseSize(headers, status) {
   return Number.isSafeInteger(size) && size > 0 ? size : 0;
 }
 
-chrome.action.setBadgeBackgroundColor({ color: "#007368" }).catch(console.error);
+extension.action.setBadgeBackgroundColor({ color: "#007368" }).catch(console.error);
 
-chrome.webRequest.onHeadersReceived.addListener(details => {
+extension.webRequest.onHeadersReceived.addListener(details => {
   if (details.tabId < 0 || details.method !== "GET" || ![200, 206].includes(details.statusCode) ||
       (details.documentLifecycle && details.documentLifecycle !== "active")) return;
   const headers = Object.fromEntries(
@@ -58,7 +59,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
   });
 }, { urls, types: ["main_frame", "sub_frame", "media", "xmlhttprequest", "other"] }, ["responseHeaders"]);
 
-chrome.webNavigation.onCommitted.addListener(details => {
+extension.webNavigation.onCommitted.addListener(details => {
   if (details.frameId !== 0) return;
   update(details.tabId, stored => ({
     since: details.timeStamp,
@@ -66,5 +67,5 @@ chrome.webNavigation.onCommitted.addListener(details => {
   }));
 });
 
-chrome.tabs.onRemoved.addListener(tabId => update(tabId, () => null));
-chrome.tabs.onReplaced.addListener((_, oldTabId) => update(oldTabId, () => null));
+extension.tabs.onRemoved.addListener(tabId => update(tabId, () => null));
+extension.tabs.onReplaced?.addListener((_, oldTabId) => update(oldTabId, () => null));

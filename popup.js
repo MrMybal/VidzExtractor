@@ -1,3 +1,4 @@
+import { extension } from "./api.js";
 import { httpUrl, mediaFrom, readContentSize, safeFilename } from "./media.js";
 import { HlsPlaylistError, loadPlaylist, measurePlaylist, readPlaylist } from "./hls.js";
 import { playerForStream, scanPlayers } from "./players.js";
@@ -331,7 +332,7 @@ async function refresh() {
   statusMessage("");
   render();
   try {
-    const inject = allFrames => chrome.scripting.executeScript({
+    const inject = allFrames => extension.scripting.executeScript({
       target: { tabId: tab.id, allFrames },
       func: scanPlayers
     });
@@ -341,7 +342,7 @@ async function refresh() {
       urls: player.sources.map(source => httpUrl(source.url)?.href).filter(Boolean),
       adaptive: !player.sources.length || player.sources.some(source => /^blob:/i.test(source.url))
     }))).sort((a, b) => Number(b.playing) - Number(a.playing));
-    networkItems = (await chrome.storage.session.get(storageKey))[storageKey]?.items ?? [];
+    networkItems = (await extension.storage.session.get(storageKey))[storageKey]?.items ?? [];
   } catch {
     statusMessage("La détection a échoué. Recharge la page de la vidéo et réessaie.", true);
   } finally {
@@ -361,25 +362,25 @@ async function save(item) {
     if (item.kind === "hls") {
       const token = crypto.randomUUID();
       exportKey = `export:${token}`;
-      await chrome.storage.session.set({
+      await extension.storage.session.set({
         [exportKey]: {
           url: item.url, name: item.label, variantUrl: item.variant?.url,
           quality: item.variant && variantLabel(item.variant, item.options)
         }
       });
-      await chrome.tabs.create({ url: chrome.runtime.getURL(`export.html#${token}`) });
+      await extension.tabs.create({ url: extension.runtime.getURL(`export.html#${token}`) });
       return;
     }
-    const extension = item.filename.split(".").at(-1);
-    downloadId = await chrome.downloads.download({
+    const suffix = item.filename.split(".").at(-1);
+    downloadId = await extension.downloads.download({
       url: item.url,
-      filename: item.label === item.defaultName ? item.filename : safeFilename(item.label, extension),
+      filename: item.label === item.defaultName ? item.filename : safeFilename(item.label, suffix),
       conflictAction: "uniquify"
     });
-    const [download] = await chrome.downloads.search({ id: downloadId });
+    const [download] = await extension.downloads.search({ id: downloadId });
     showDownloadState(download?.state);
   } catch {
-    if (exportKey) await chrome.storage.session.remove(exportKey).catch(console.error);
+    if (exportKey) await extension.storage.session.remove(exportKey).catch(console.error);
     statusMessage("Impossible de lancer le téléchargement.", true);
   } finally {
     busy = false;
@@ -390,14 +391,14 @@ async function save(item) {
 function showDownloadState(state) {
   if (state === "interrupted") statusMessage("Le téléchargement a été interrompu.", true);
   else if (state === "complete") statusMessage("Vidéo téléchargée.");
-  else statusMessage("Téléchargement lancé dans Chrome.");
+  else statusMessage("Téléchargement lancé dans le navigateur.");
 }
 
-chrome.downloads.onChanged.addListener(delta => {
+extension.downloads.onChanged.addListener(delta => {
   if (delta.id === downloadId && delta.state) showDownloadState(delta.state.current);
 });
 
-chrome.storage.onChanged.addListener((changes, area) => {
+extension.storage.onChanged.addListener((changes, area) => {
   if (area !== "session" || !changes[storageKey]) return;
   const { oldValue, newValue } = changes[storageKey];
   if (oldValue && oldValue.since !== newValue?.since) {
@@ -411,7 +412,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
 });
 
 scanButton.addEventListener("click", refresh);
-[tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+[tab] = await extension.tabs.query({ active: true, currentWindow: true });
 blocked = !Number.isInteger(tab?.id) || !/^https?:\/\//i.test(tab.url ?? "");
 if (blocked) {
   render();
