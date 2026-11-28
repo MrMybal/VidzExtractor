@@ -35,6 +35,14 @@ h1, h2, p { margin: 0; }
 h1 { font-size: 17px; font-weight: 720; letter-spacing: -.025em; }
 h2 { font-size: 15px; font-weight: 720; }
 .top button { margin-left: auto; }
+.top a {
+  flex-shrink: 0;
+  color: inherit;
+  font-size: 12px;
+  text-underline-offset: 3px;
+}
+.top a:focus-visible { outline: 2px solid #80e1bc; outline-offset: 4px; }
+.export-page .top a { margin-left: auto; }
 main { padding: 16px 17px 18px; }
 .popup .top { background: #172d29; border-bottom: 1px solid var(--border); }
 .popup .top img { border-radius: 8px; }

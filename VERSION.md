@@ -2,6 +2,8 @@
 
 [Back to README](README.md) · [Français](VERSION.fr.md)
 
+[User manual](Documentation/Documentation.html#/en/release-notes) · [Troubleshooting](Documentation/Documentation.html#/en/troubleshooting)
+
 ## Version 1.2.0
 
 - Add a Firefox edition alongside the Chrome extension.

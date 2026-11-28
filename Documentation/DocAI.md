@@ -1,0 +1,17 @@
+# Vidz Extracteur documentation — assistant instructions
+
+The human manual opens at `Documentation.html#/en/overview` or `Documentation.html#/fr/overview`. This file is a separate sidecar: never import it into navigation, search or human pages.
+
+In the source repository, author and build only inside `.CyDocBuild/`. Read `.CyDocBuild/README.md`, `cydoc.config.json`, and the installed CyDoc guides in `node_modules/cydoc/ai/`: README.md, UPDATE.md, INTEGRATION.md and AUTHORING.md. CyDoc is pinned to 0.2.0, upstream commit 9837f815cdaa67e3206f68e15d04f4700f040dbf. The host application is version 1.2.0, GPL-3.0-only.
+
+Verify descriptions against the extension's real UI and source. It has French button labels, direct file downloads, and export for compatible unencrypted HLS videos on demand with combined tracks. DASH export, live HLS, encryption, transcoding and merging separate tracks are unavailable. Firefox 140+ uses an unsigned temporary add-on and temporary HLS storage. Do not describe a new documentation integration as already present in old published release packages.
+
+Write English originals and complete French translations. Keep page IDs, explicit anchors, media/node/port IDs, parent IDs and previous/next destinations identical across locales. Update `revision` and reviewed French `sourceRevision` together when meaning changes. Preserve README and VERSION filenames, existing headings/anchors and external release links. A moved public manual page needs a validated alias rather than a silently broken address.
+
+The tree has eight public pages: overview, installation, quickstart, downloads, hls-export, troubleshooting, reference, release-notes. Parent relationships group installation/quickstart under overview, hls-export under downloads, and release-notes under reference. The reading path is explicitly ordered independently of the tree. Keep tutorials action-oriented, with expected results and failure guidance; troubleshoot from visible symptoms. Never insert build instructions, migration reports or validation histories into human pages.
+
+Only image and graph modules are enabled. Reuse the existing logo and real screenshot. Keep logical `assets/` paths; the reader resolves them under DocData. Static diagram JSON produces SVG with text alternatives and in-window enlargement. Graphs retain reading mode, text view, keyboard exploration and stable state IDs. Avoid runtime CDNs, network fonts, telemetry, file-URL fetches, native fullscreen and a server requirement.
+
+Run `npm ci`, `npm run build`, `npm run check`, and `npm run verify` from `.CyDocBuild/`. Both build and check write the export. Fix authoring inputs or the build wrapper and regenerate; do not hand-edit generated `data.js`, manifest.json or bundles. The wrapper supplies host metadata, this sidecar and license notices. Private verification evidence belongs in ignored `.CyDocBuild/internal/`.
+
+Ship Documentation.html, this sidecar and the entire DocData directory. The source toolchain, vendored generation archive and test artifacts are not part of the shipped manual. The packaging script includes the generated Documentation tree. Popup help targets `#/fr/quickstart`; HLS export help targets `#/fr/hls-export/save`. Construct file URLs with platform APIs, preserving encoded paths and the fragment route. Test the real local reader and contextual entry points without claiming untested Firefox or other-platform behavior. No desktop takeover or GitHub Actions are needed.

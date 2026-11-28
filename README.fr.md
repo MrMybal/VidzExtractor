@@ -2,7 +2,8 @@
   <tr>
     <td width="300" align="left" valign="top">
       <a href="https://github.com/MrMybal/VidzExtractor">Dépôt</a><br>
-      <a href="https://github.com/MrMybal/VidzExtractor/issues">Problèmes</a><br><br>
+      <a href="https://github.com/MrMybal/VidzExtractor/issues">Problèmes</a><br>
+      <a href="Documentation/Documentation.html#/fr/overview">Manuel utilisateur</a><br><br>
       <sub>README</sub><br>
       <a href="README.md">English</a> · <a href="README.fr.md">Français</a>
     </td>
@@ -26,6 +27,8 @@ Vidz Extracteur est une extension Chrome et Firefox qui enregistre les vidéos d
 > Cette release ajoute une édition Firefox. Les deux éditions affichent un aperçu, la durée, la taille lorsqu’elle est disponible et un choix de qualité pour les flux HLS compatibles. Consulte les [notes de version et les limites connues](VERSION.fr.md).
 
 [![Fiche HLS de Vidz Extracteur avec un aperçu, la durée, la taille estimée et la qualité sélectionnée](assets/screenshots/vidz-extracteur-hls.png)](assets/screenshots/vidz-extracteur-hls.png)
+
+Le [manuel français](Documentation/Documentation.html#/fr/overview) et le [manuel anglais](Documentation/Documentation.html#/en/overview) détaillent l’installation, un premier téléchargement, l’export HLS et le dépannage. Après téléchargement des sources ou d’un export de documentation, ouvre directement `Documentation/Documentation.html` en conservant tout son dossier. GitHub affiche le code HTML sans exécuter le lecteur. Les paquets nouvellement générés comprennent le manuel et les liens contextuels **Aide** ; les téléchargements 1.2.0 déjà publiés précèdent cette intégration.
 
 ## Fonctionnement
 
@@ -72,8 +75,18 @@ Chrome peut charger directement la racine du dépôt. Le script Python 3 génèr
 
 Vidz Extracteur est distribué sous la [licence publique générale GNU, version 3 uniquement](LICENSE) (`GPL-3.0-only`).
 
+| Bibliothèque · source | Licence · conditions | Utilisation / périmètre |
+| --- | --- | --- |
+| [CyDoc 0.2.0](https://github.com/MrMybal/CyDoc/tree/9837f81) | [MIT et notices distribuées](Documentation/DocData/THIRD-PARTY-NOTICES.txt) | Lecteur de documentation hors ligne ; modules image et graphe. |
+| [Marked](https://github.com/markedjs/marked) | MIT, avec la notice Markdown de type BSD incluse ; [conditions complètes](Documentation/DocData/THIRD-PARTY-NOTICES.txt) | Compilation Markdown lors de la génération du manuel. |
+| [Prism](https://github.com/PrismJS/prism), [esbuild](https://github.com/evanw/esbuild) | MIT ; [notices distribuées](Documentation/DocData/THIRD-PARTY-NOTICES.txt) | Coloration et assemblage lors de la génération du manuel. |
+
+Les sources et commandes de génération du manuel se trouvent dans [.CyDocBuild/README.md](.CyDocBuild/README.md). Node.js 22+ est nécessaire pour le régénérer ; un navigateur suffit pour lire l’export.
+
 ## Références
 
+- [Manuel utilisateur — Français](Documentation/Documentation.html#/fr/overview) · [English](Documentation/Documentation.html#/en/overview)
+- [Dépannage](Documentation/Documentation.html#/fr/troubleshooting)
 - [Notes de version](VERSION.fr.md)
 - [Releases GitHub](https://github.com/MrMybal/VidzExtractor/releases)
 - [Signaler un problème](https://github.com/MrMybal/VidzExtractor/issues)

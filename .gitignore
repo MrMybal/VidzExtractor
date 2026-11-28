@@ -3,3 +3,7 @@
 *.key
 *.pfx
 *.p12
+/.CyDocBuild/CyDoc/
+/.CyDocBuild/node_modules/
+/.CyDocBuild/.npm-cache/
+/.CyDocBuild/internal/

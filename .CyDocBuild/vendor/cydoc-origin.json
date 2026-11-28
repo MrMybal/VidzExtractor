@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/MrMybal/CyDoc",
+  "branch": "main",
+  "commit": "9837f815cdaa67e3206f68e15d04f4700f040dbf",
+  "version": "0.2.0",
+  "archive": "cydoc-0.2.0.tgz",
+  "sha256": "51ed2a5df1290a50ac8ec21db454637ebdea8c2225cb90376d19431580431628",
+  "creation": "npm ci followed by npm pack in the unmodified checkout at this commit"
+}

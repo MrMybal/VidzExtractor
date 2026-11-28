@@ -1,0 +1,17 @@
+{
+  "name": "vidz-extracteur-documentation",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node build.mjs build",
+    "check": "node build.mjs check",
+    "export": "python export.py",
+    "verify": "node verify.mjs"
+  },
+  "devDependencies": {
+    "cydoc": "file:vendor/cydoc-0.2.0.tgz",
+    "playwright": "1.65.1"
+  }
+}

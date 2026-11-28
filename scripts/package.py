@@ -34,6 +34,19 @@ FILES = (
 )
 
 
+def documentation_files():
+    """Include the complete generated reader, never the private build workspace."""
+    directory = ROOT / "Documentation"
+    required = ("Documentation.html", "DocAI.md", "DocData/data.js", "DocData/viewer.js",
+                "DocData/viewer.css", "DocData/manifest.json", "DocData/translation-report.json",
+                "DocData/media-image.js", "DocData/media-graph.js",
+                "DocData/THIRD-PARTY-NOTICES.txt", "DocData/APPLICATION-LICENSE.txt")
+    for path in required:
+        if not (directory / path).is_file():
+            raise FileNotFoundError(f"Missing generated documentation: {path}. Build .CyDocBuild first.")
+    return tuple(path.relative_to(ROOT).as_posix() for path in sorted(directory.rglob("*")) if path.is_file())
+
+
 def write_entry(archive, path, contents):
     entry = ZipInfo(path)
     entry.create_system = 3
@@ -57,7 +70,7 @@ def package(browser, base_manifest, version):
     try:
         with ZipFile(temporary_path, "w") as archive:
             write_entry(archive, "manifest.json", (json.dumps(manifest, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
-            for path in FILES:
+            for path in (*FILES, *documentation_files()):
                 write_entry(archive, path, (ROOT / path).read_bytes())
         temporary_path.replace(target)
     finally:

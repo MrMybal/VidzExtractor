@@ -2,6 +2,8 @@
 
 [Retour au README](README.fr.md) · [English](VERSION.md)
 
+[Manuel utilisateur](Documentation/Documentation.html#/fr/release-notes) · [Dépannage](Documentation/Documentation.html#/fr/troubleshooting)
+
 ## Version 1.2.0
 
 - Ajout d’une édition Firefox aux côtés de l’extension Chrome.
