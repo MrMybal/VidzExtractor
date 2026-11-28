@@ -6,6 +6,7 @@
 
 ## Version 1.2.0
 
+- Les paquets Chrome et Firefox actualisés comprennent le manuel hors ligne CyDoc 0.2.0 en anglais et français, avec des liens contextuels **Aide**. Le même manuel est disponible dans un [ZIP de documentation distinct](https://github.com/MrMybal/VidzExtractor/releases/download/v1.2.0/VidzExtractor-Documentation-1.2.0.zip). Télécharge le paquet actualisé si ton ancienne copie n’a pas de lien d’aide.
 - Ajout d’une édition Firefox aux côtés de l’extension Chrome.
 - Enregistrement HLS par le gestionnaire de téléchargements de Firefox après assemblage temporaire des segments d’origine.
 - Génération du ZIP Chrome et du XPI Firefox depuis les sources partagées.

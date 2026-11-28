@@ -28,7 +28,7 @@ Vidz Extracteur est une extension Chrome et Firefox qui enregistre les vidéos d
 
 [![Fiche HLS de Vidz Extracteur avec un aperçu, la durée, la taille estimée et la qualité sélectionnée](assets/screenshots/vidz-extracteur-hls.png)](assets/screenshots/vidz-extracteur-hls.png)
 
-Le [manuel français](Documentation/Documentation.html#/fr/overview) et le [manuel anglais](Documentation/Documentation.html#/en/overview) détaillent l’installation, un premier téléchargement, l’export HLS et le dépannage. Après téléchargement des sources ou d’un export de documentation, ouvre directement `Documentation/Documentation.html` en conservant tout son dossier. GitHub affiche le code HTML sans exécuter le lecteur. Les paquets nouvellement générés comprennent le manuel et les liens contextuels **Aide** ; les téléchargements 1.2.0 déjà publiés précèdent cette intégration.
+Le [manuel français](Documentation/Documentation.html#/fr/overview) et le [manuel anglais](Documentation/Documentation.html#/en/overview) détaillent l’installation, un premier téléchargement, l’export HLS et le dépannage. Après téléchargement des sources ou d’un export de documentation, ouvre directement `Documentation/Documentation.html` en conservant tout son dossier. GitHub affiche le code HTML sans exécuter le lecteur. Les paquets Chrome et Firefox 1.2.0 actualisés comprennent le manuel et les liens contextuels **Aide**. Si tu possèdes une ancienne copie, télécharge à nouveau le paquet pour obtenir ces ajouts. Un [ZIP de documentation distinct](https://github.com/MrMybal/VidzExtractor/releases/download/v1.2.0/VidzExtractor-Documentation-1.2.0.zip) est également disponible.
 
 ## Fonctionnement
 

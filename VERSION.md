@@ -6,6 +6,7 @@
 
 ## Version 1.2.0
 
+- Refreshed Chrome and Firefox packages include the offline CyDoc 0.2.0 manual in English and French, with contextual **Aide** links. The same manual is available as a separate [documentation ZIP](https://github.com/MrMybal/VidzExtractor/releases/download/v1.2.0/VidzExtractor-Documentation-1.2.0.zip). Download the refreshed package if your earlier copy has no help link.
 - Add a Firefox edition alongside the Chrome extension.
 - Save HLS videos in Firefox through its download manager after assembling the original segments in temporary browser storage.
 - Build the Chrome ZIP and Firefox XPI from the shared source.

@@ -7,7 +7,7 @@ parent: overview
 order: 10
 previous: overview
 next: quickstart
-revision: 1
+revision: 2
 ---
 Choose the edition for your desktop browser. No companion app or third-party runtime library is required. The downloads below are for Vidz Extracteur **1.2.0**.
 
@@ -35,4 +35,4 @@ To update the temporary edition, remove it from `about:debugging`, load the repl
 
 In a source checkout or a newly built package containing this manual, **Aide** opens the relevant topic from the popup or HLS export tab. You can also open **Documentation/Documentation.html** directly from the extracted folder. Keep the complete **Documentation** folder together to retain images, diagrams, search and both languages offline.
 
-The previously published 1.2.0 downloads predate this manual integration. In those packages, use the README for installation and open the manual from an updated checkout or documentation export.
+The refreshed 1.2.0 Chrome and Firefox packages include this manual and the **Aide** links. If your copy has no help link, download the package again and [update the extension](doc:installation) using the instructions for your browser. The [separate documentation ZIP](https://github.com/MrMybal/VidzExtractor/releases/download/v1.2.0/VidzExtractor-Documentation-1.2.0.zip) contains the same manual; extract it and open **Documentation/Documentation.html**.

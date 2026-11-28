@@ -7,7 +7,7 @@ parent: overview
 order: 10
 previous: overview
 next: quickstart
-sourceRevision: 1
+sourceRevision: 2
 ---
 Choisis l’édition correspondant à ton navigateur de bureau. Aucun logiciel compagnon ni bibliothèque tierce à l’exécution n’est nécessaire. Les téléchargements ci-dessous concernent Vidz Extracteur **1.2.0**.
 
@@ -35,4 +35,4 @@ Pour actualiser l’édition temporaire, retire-la dans `about:debugging`, charg
 
 Dans les sources ou un paquet nouvellement généré contenant ce manuel, **Aide** ouvre la rubrique correspondante depuis la fenêtre de l’extension ou l’onglet d’export HLS. Tu peux aussi ouvrir directement **Documentation/Documentation.html** depuis le dossier extrait. Conserve tout le dossier **Documentation** pour garder les images, les schémas, la recherche et les deux langues hors ligne.
 
-Les téléchargements 1.2.0 déjà publiés précèdent cette intégration du manuel. Dans ces paquets, utilise le README pour l’installation et ouvre le manuel depuis des sources actualisées ou l’export de documentation.
+Les paquets Chrome et Firefox 1.2.0 actualisés comprennent ce manuel et les liens **Aide**. Si ta copie n’a pas de lien d’aide, télécharge à nouveau le paquet et [mets à jour l’extension](doc:installation) avec les instructions de ton navigateur. Le [ZIP de documentation distinct](https://github.com/MrMybal/VidzExtractor/releases/download/v1.2.0/VidzExtractor-Documentation-1.2.0.zip) contient le même manuel ; extrais-le et ouvre **Documentation/Documentation.html**.
